@@ -1,0 +1,53 @@
+﻿<Window
+    x:Class="DropDownButtonTest.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DropDownButtonTest"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="255"
+    Height="203"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="Dictionary1.xaml" />
+    </Window.Resources>
+    <Grid>
+        <DataGrid
+            x:Name="dataGrid"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            DataGridCell.Selected="DataGrid_GotFocus"
+            IsReadOnly="False"
+            SelectionMode="Single"
+            SelectionUnit="Cell">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*" Header="列名">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ColumnName, Mode=OneWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <local:DropDownButton HorizontalContentAlignment="Left" Style="{StaticResource DropDownButtonStyle}">
+                                <TextBlock Text="{Binding ColumnName, Mode=OneWay}" />
+                                <local:DropDownButton.Menu>
+                                    <ContextMenu>
+                                        <MenuItem Header="メニュー1" />
+                                        <MenuItem Header="メニュー2">
+                                            <MenuItem Header="サブメニュー1" />
+                                            <MenuItem Header="サブメニュー2" />
+                                        </MenuItem>
+                                        <MenuItem Header="メニュー3" />
+                                    </ContextMenu>
+                                </local:DropDownButton.Menu>
+                            </local:DropDownButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
