@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace DropDownButtonTest
 {
     /// <summary>
-    /// ドロップダウンコントロール
+    /// ドロップダウンボタンコントロール
     /// </summary>
     public class DropDownButton : ToggleButton
     {
